@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="visible"
-    class="fixed inset-0 bg-orange-500 bg-opacity-80 flex justify-center items-center z-50"
+    class="absolute inset-0 bg-orange-500 bg-opacity-80 flex justify-center items-center z-50 rounded-[32px]"
   >
     <p class="text-white text-xl font-semibold">
       {{ text }}
