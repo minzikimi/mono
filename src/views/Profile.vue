@@ -97,7 +97,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import supabase from "../supabase";
-import { useAuth } from "../composables/useAuth";
+import { useAuth } from "../auth/useAuth";
 import { useRouter } from "vue-router";
 
 import { onMounted } from "vue";

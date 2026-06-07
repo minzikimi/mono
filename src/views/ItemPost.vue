@@ -123,7 +123,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { useAuth } from "../composables/useAuth";
+import { useAuth } from "../auth/useAuth";
 import { onMounted } from "vue";
 import supabase from "../supabase";
 import Spinner from "../components/Spinner.vue";
@@ -136,6 +136,7 @@ const location = ref("");
 const tel = ref("");
 const previewImage = ref("");
 const img_url = ref("");
+//첨부한사진은 스토리지에 저장하고 유알엘을 저장
 const { isLogin, user, updateUserState } = useAuth();
 
 const isLoading = ref(false);

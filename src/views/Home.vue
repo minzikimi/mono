@@ -27,7 +27,7 @@
       <h3 class="text-neutral-700">Already a member?</h3>
       <router-link to="/login" class="text-orange-500"> Login </router-link>
     </div>
-    <div
+    <!-- <div
       class="mt-4 p-3 bg-neutral-100 border border-red-400 rounded-md shadow-sm"
     >
       <p class="text-sm text-red-600 font-medium">
@@ -36,7 +36,7 @@
       <p class="text-xs text-neutral-600 mt-1">
         We’re working on fixing it. Please try again shortly.
       </p>
-    </div>
+    </div> -->
   </div>
 </template>
 

@@ -65,7 +65,7 @@
 import { Icon } from "@iconify/vue";
 import { useRoute } from "vue-router";
 import { ref, watch, computed } from "vue";
-import { useAuth } from "../composables/useAuth";
+import { useAuth } from "../auth/useAuth";
 import { usePriceChangeSubscription } from "../composables/usePriceChangeSubscription";
 import NotificationDropdown from "./NotificationDropdown.vue";
 import { useNotificationStore } from "../stores/notification";
@@ -82,7 +82,7 @@ function toggleDropdown() {
 
 const notificationStore = useNotificationStore();
 const notificationCount = computed(
-  () => notificationStore.notifications.length
+  () => notificationStore.notifications.length,
 );
 
 watch(
@@ -93,7 +93,7 @@ watch(
       console.log("hi");
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 // watch는 currentPath를 감시하도록 함

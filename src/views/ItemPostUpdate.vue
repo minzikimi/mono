@@ -119,7 +119,7 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
-import { useAuth } from "../composables/useAuth";
+import { useAuth } from "../auth/useAuth";
 import supabase from "../supabase";
 import Spinner from "../components/Spinner.vue";
 import { useRouter, useRoute } from "vue-router";
