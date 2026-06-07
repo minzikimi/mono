@@ -25,7 +25,7 @@
       <input
         type="tel"
         v-model="tel"
-        placeholder="000 0000 0000"
+        placeholder="+46 00 0000 0000"
         required
         class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
       />
