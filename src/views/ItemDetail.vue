@@ -4,7 +4,12 @@
       {{ post.title }}
     </h1>
     <p class="text-sm text-gray-600 mb-4">
-      <span class="font-semibold">{{ authorName }}</span>
+      <router-link
+        :to="`/seller-profile/${post.author}`"
+        class="font-bold text-gray-800 hover:text-orange-500 hover:underline cursor-pointer"
+      >
+        <span class="font-semibold">{{ authorName }}</span>
+      </router-link>
       <span class="text-gray-400 mx-1">·</span>
       <span>{{ post.location }}</span>
     </p>
@@ -46,14 +51,14 @@
           Chat
         </button>
         <button
-          v-if="!isApplied"
+          v-if="!isSaved"
           @click="handleSave"
           class="flex-1 py-4 text-center text-white bg-orange-500 border-l border-gray-200 hover:bg-orange-100 transition font-semibold"
         >
           Save
         </button>
         <button
-          v-if="isApplied"
+          v-if="isSaved"
           @click="handleCancelSave"
           class="flex-1 py-4 text-center text-gray-400 border-l border-gray-200 cursor-pointer"
         >
@@ -72,7 +77,7 @@
           Delete
         </button>
         <router-link
-          v-if="!isApplied"
+          v-if="!isSaved"
           :to="`/item-post-update/${post.id}`"
           class="flex-1 py-4 text-center text-white bg-orange-500 border-l border-gray-200 hover:bg-orange-100 transition font-semibold"
         >
@@ -96,7 +101,7 @@ import Chat from "./Chat.vue";
 const route = useRoute();
 const id = route.params.id;
 const router = useRouter();
-const isApplied = ref(false);
+const isSaved = ref(false);
 const post = ref(null);
 const { isLogin, user, updateUserState } = useAuth();
 const showChat = ref(false);
@@ -157,7 +162,7 @@ const handleCancelSave = async () => {
     alert("Failed to cancel");
     return;
   }
-  isApplied.value = false;
+  isSaved.value = false;
   alert("Save cancelled");
 };
 
@@ -235,7 +240,7 @@ const checkSave = async () => {
     return;
   }
   if (data.length > 0) {
-    isApplied.value = true;
+    isSaved.value = true;
   }
 };
 </script>
