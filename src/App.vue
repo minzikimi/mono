@@ -4,13 +4,19 @@ import TabBar from "./components/TabBar.vue";
 </script>
 
 <template>
-  <div
-    class="max-w-md mx-auto w-full min-h-screen box-border relative"
-    style="font-family: 'Host Grotesk', sans-serif"
-  >
-    <NavBar />
-    <TabBar />
-    <router-view />
+  <div class="w-full min-h-screen bg-[#F5F5F7] flex justify-center">
+    <div
+      class="max-w-md w-full min-h-screen bg-white border-x border-[#E5E5EA] flex flex-col relative"
+      style="font-family: &quot;Host Grotesk&quot;, sans-serif"
+    >
+      <NavBar />
+
+      <main class="flex-1 w-full pb-16">
+        <router-view />
+      </main>
+
+      <TabBar />
+    </div>
   </div>
 </template>
 
