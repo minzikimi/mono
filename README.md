@@ -10,7 +10,7 @@ A student-only marketplace for Hyper Island. Buy, sell, save items, and get noti
 - **Save Items:** Mark favorites and track them.
 - **Real-time Price Alerts:** Get notifications when saved items’ prices change.
 - **Profiles:** Name, location, phone, and bio.
-- **UI/UX:** Tailwind CSS, orange brand color(Inspired by HI themed color and Karrot), loading spinner, simple animations.
+- **UI/UX:** Tailwind CSS, orange brand color(Inspired by HI themed color and Karrot), loading spinner, simple animations , dark&light mode.
 
 ---
 
