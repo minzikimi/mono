@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full min-h-screen flex flex-col justify-center items-center bg-white dark:bg-neutral-800 px-4 relative overflow-hidden transition-colors duration-300"
+    class="w-full h-full flex flex-col justify-center items-center bg-white dark:bg-neutral-800 px-4 relative overflow-hidden transition-colors duration-300"
   >
     <button
       @click="themeStore.toggleDarkMode"

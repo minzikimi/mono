@@ -5,9 +5,9 @@
       currentPath !== '/signup' &&
       currentPath !== '/login'
     "
-    class="flex justify-between items-center px-4 h-20 bg-orange-500 text-white"
+    class="flex justify-between items-center px-6 h-20 bg-orange-500 dark:bg-neutral-800 text-white dark:border-b dark:border-neutral-700/50 z-40 transition-colors duration-300"
   >
-    <div class="relative mr-4">
+    <div class="relative py-2 pr-2">
       <Icon
         icon="material-symbols:notifications"
         width="24"
@@ -27,7 +27,12 @@
       />
     </div>
 
-    <h1 class="text-2l m-5">{{ title }}</h1>
+    <h1
+      class="flex-1 text-center text-2xl font-bold tracking-normal text-white dark:text-neutral-100 transition-colors"
+      style="word-spacing: 0.5rem"
+    >
+      {{ title }}
+    </h1>
 
     <router-link
       v-if="
