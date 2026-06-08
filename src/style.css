@@ -4,3 +4,4 @@
 body {
   font-family: 'Host Grotesk', sans-serif;
 }
+@variant dark (&:where(.dark, .dark *));
