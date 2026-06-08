@@ -1,14 +1,19 @@
 <template>
   <Spinner :visible="isLoading" text="just a moment..." />
-  <div class="min-h-screen flex flex-col justify-center items-center bg-white">
+  <div
+    class="w-full h-full flex flex-col justify-center items-center bg-white dark:bg-neutral-800 px-4 transition-colors duration-300"
+  >
     <form class="w-full max-w-xs" @submit.prevent="handleLogin">
-      <h1 class="text-6xl font-extrabold mb-10 text-neutral-700 tracking-wide">
+      <h1
+        class="text-6xl font-extrabold mb-10 text-neutral-700 dark:text-neutral-100 tracking-wide transition-colors"
+      >
         Login
       </h1>
+
       <div class="mb-4">
         <label
           for="email"
-          class="block mb-1 text-gray-700 font-semibold text-sm"
+          class="block mb-1 text-gray-700 dark:text-neutral-300 font-semibold text-sm transition-colors"
           >Email</label
         >
         <input
@@ -17,13 +22,14 @@
           placeholder="Enter your email"
           required
           v-model="email"
-          class="rounded-md w-full px-4 py-3 border border-gray-200 focus:outline-none focus:border-blue-400 text-base transition"
+          class="rounded-md w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 focus:outline-none focus:border-blue-400 dark:focus:border-blue-500 text-base transition-all"
         />
       </div>
+
       <div class="mb-6">
         <label
           for="password"
-          class="block mb-1 text-gray-700 font-semibold text-sm"
+          class="block mb-1 text-gray-700 dark:text-neutral-300 font-semibold text-sm transition-colors"
           >Password</label
         >
         <input
@@ -32,12 +38,13 @@
           required
           placeholder="Enter your password"
           v-model="password"
-          class="rounded-md w-full px-4 py-3 border border-gray-200 focus:outline-none focus:border-blue-400 text-base transition"
+          class="rounded-md w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 focus:outline-none focus:border-blue-400 dark:focus:border-blue-500 text-base transition-all"
         />
       </div>
+
       <button
         type="submit"
-        class="rounded-md w-full py-3 bg-orange-500 hover:bg-orange-800 text-white font-semibold text-base shadow transition"
+        class="rounded-md w-full py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base shadow active:scale-[0.98] transition-all cursor-pointer"
       >
         Log In
       </button>
@@ -64,6 +71,8 @@ const handleLogin = async () => {
     email: email.value,
     password: password.value,
   });
+  isLoading.value = false;
+
   if (error) {
     alert(error.message);
   } else {

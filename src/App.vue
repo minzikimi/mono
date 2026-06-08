@@ -12,19 +12,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full min-h-screen bg-[#F5F5F7] flex justify-center">
+  <div class="w-full h-screen bg-[#F5F5F7] flex justify-center overflow-hidden">
     <div
-      class="max-w-md w-full min-h-screen bg-white dark:bg-neutral-800 border-x border-[#E5E5EA] dark:border-neutral-700 flex flex-col relative transition-colors duration-300"
+      class="max-w-md w-full h-screen bg-white dark:bg-neutral-800 border-x border-[#E5E5EA] dark:border-neutral-700 flex flex-col relative overflow-hidden"
     >
-      <NavBar />
+      <NavBar class="shrink-0" />
 
       <main
-        class="flex-1 w-full pb-16 bg-white dark:bg-neutral-800 flex flex-col transition-colors duration-300"
+        class="flex-1 w-full pb-16 bg-white dark:bg-neutral-800 overflow-y-auto"
       >
         <router-view />
       </main>
 
-      <TabBar />
+      <TabBar class="shrink-0" />
     </div>
   </div>
 </template>
