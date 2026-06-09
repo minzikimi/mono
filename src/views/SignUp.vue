@@ -3,11 +3,19 @@
   <div
     class="w-full h-full flex flex-col justify-center px-6 py-10 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 transition-colors duration-300"
   >
-    <h1
-      class="text-4xl font-bold mb-8 text-center text-neutral-700 dark:text-neutral-100 transition-colors"
-    >
-      Join MoNo
-    </h1>
+    <div class="relative flex items-center justify-center mb-8">
+      <button
+        @click.prevent="router.back()"
+        class="absolute left-0 text-xl p-2 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer transition-colors"
+      >
+        ✕
+      </button>
+      <h1
+        class="text-4xl font-bold text-center text-neutral-700 dark:text-neutral-100 transition-colors"
+      >
+        Join MoNo
+      </h1>
+    </div>
 
     <form @submit.prevent="handleSignup" class="space-y-6">
       <input

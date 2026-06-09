@@ -4,11 +4,19 @@
     class="w-full h-full flex flex-col justify-center items-center bg-white dark:bg-neutral-800 px-4 transition-colors duration-300"
   >
     <form class="w-full max-w-xs" @submit.prevent="handleLogin">
-      <h1
-        class="text-6xl font-extrabold mb-10 text-neutral-700 dark:text-neutral-100 tracking-wide transition-colors"
-      >
-        Login
-      </h1>
+      <div class="relative flex items-center justify-center mb-10 w-full">
+        <button
+          @click.prevent="router.back()"
+          class="absolute left-0 text-xl p-2 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer transition-colors"
+        >
+          ✕
+        </button>
+        <h1
+          class="text-6xl font-extrabold text-neutral-700 dark:text-neutral-100 tracking-wide transition-colors"
+        >
+          Login
+        </h1>
+      </div>
 
       <div class="mb-4">
         <label
