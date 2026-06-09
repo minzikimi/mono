@@ -21,10 +21,10 @@
     <!-- bg-circles -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
       <div
-        class="absolute w-48 h-48 bg-orange-500 dark:bg-orange-400 rounded-full opacity-30 dark:opacity-25 animate-moveCircle1 transition-colors duration-300"
+        class="absolute w-38 h-38 bg-orange-500 dark:bg-orange-400 rounded-full opacity-30 dark:opacity-25 animate-moveCircle1 transition-colors duration-300"
       ></div>
       <div
-        class="absolute w-36 h-36 bg-orange-500 dark:bg-orange-400 rounded-full opacity-20 dark:opacity-20 animate-moveCircle2 transition-colors duration-300"
+        class="absolute w-26 h-26 bg-orange-500 dark:bg-orange-400 rounded-full opacity-20 dark:opacity-20 animate-moveCircle2 transition-colors duration-300"
       ></div>
     </div>
 
