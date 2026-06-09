@@ -16,6 +16,9 @@ export const usePriceChangeSubscription = (userId) => {
         const postId = payload.new.id;
 
         if (oldPrice !== newPrice) {
+          console.log("1. userId:", userId);
+  console.log("2.postId:", postId);
+  console.log("3.success :", oldPrice, "=>", newPrice);
           const { data: postData, error: postError } = await supabase
             .from("item_posts")
             .select("title")

@@ -6,6 +6,7 @@
     <form class="w-full max-w-xs" @submit.prevent="handleLogin">
       <div class="relative flex items-center justify-center mb-10 w-full">
         <button
+          type="button"
           @click.prevent="router.back()"
           class="absolute left-0 text-xl p-2 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer transition-colors"
         >

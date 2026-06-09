@@ -1,19 +1,24 @@
 <template>
   <div
     v-if="show"
-    class="absolute right-0 mt-2 w-72 bg-white border rounded shadow-lg z-50 max-h-64 overflow-auto"
+    class="absolute left-3 mt-2 w-64 bg-green-600 dark:bg-green-700 border border-green-500 rounded-lg shadow-xl z-50 max-h-64 overflow-y-auto transition-all duration-200"
   >
-    <p v-if="notifications.length === 0" class="p-4 text-gray-500">
+    <p
+      v-if="notifications.length === 0"
+      class="p-4 text-center text-sm text-green-100/90"
+    >
       No notifications
     </p>
-    <ul v-else>
+    <ul v-else class="divide-y divide-green-500/50">
       <li
         v-for="(note, idx) in notifications"
         :key="idx"
-        class="px-4 py-2 border-b hover:bg-gray-100 cursor-pointer"
+        class="px-4 py-3 hover:bg-green-500/30 cursor-pointer transition-colors"
         @click="goToItem(note.postId)"
       >
-        <p class="text-orange-600 truncate">{{ note.message }}</p>
+        <p class="text-sm font-medium text-white leading-snug">
+          {{ note.message }}
+        </p>
       </li>
     </ul>
   </div>
@@ -36,3 +41,5 @@ function goToItem(postId) {
   router.push(`/item-detail/${postId}`);
 }
 </script>
+
+<style scoped></style>
