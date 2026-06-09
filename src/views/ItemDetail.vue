@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="post"
-    class="max-w-xl mx-auto p-4 bg-white dark:bg-neutral-800 pb-20 text-neutral-800 dark:text-neutral-100 transition-colors duration-300"
+    class="max-w-xl mx-auto px-6 bg-white dark:bg-neutral-800 pb-20 text-neutral-800 dark:text-neutral-100 transition-colors duration-300"
   >
     <h1
-      class="text-3xl font-extrabold mb-2 text-orange-500 dark:text-orange-400"
+      class="text-3xl font-extrabold mt-6 mb-2 text-orange-500 dark:text-orange-400"
     >
       {{ post.title }}
     </h1>
@@ -55,14 +55,14 @@
       >
         <button
           @click="openChat"
-          class="flex-1 py-4 text-center text-orange-500 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-neutral-700/50 transition font-semibold"
+          class="flex-1 py-4 text-center text-orange-500 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-neutral-700/50 transition font-semibold cursor-pointer"
         >
           Chat
         </button>
         <button
           v-if="!isSaved"
           @click="handleSave"
-          class="flex-1 py-4 text-center text-white bg-orange-500 border-l border-gray-200 dark:border-neutral-600 hover:bg-orange-600 transition font-semibold"
+          class="flex-1 py-4 text-center text-white bg-orange-500 border-l border-gray-200 dark:border-neutral-600 hover:bg-orange-600 transition font-semibold cursor-pointer"
         >
           Save
         </button>

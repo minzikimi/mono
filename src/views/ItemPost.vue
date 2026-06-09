@@ -1,8 +1,7 @@
 <template>
   <Spinner :visible="isLoading" text="Just a moment, we're posting..." />
-  <!--  -->
   <div
-    class="overflow-y: auto; max-w-md w-full flex flex-col justify-start items-center bg-gray-50 dark:bg-neutral-800 p-4 overflow-auto transition-colors duration-300"
+    class="max-w-md w-full flex flex-col justify-start items-center bg-gray-50 dark:bg-neutral-800 overflow-y-auto transition-colors duration-300 mx-auto"
   >
     <form
       v-if="isLogin"
