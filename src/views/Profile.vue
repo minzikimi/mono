@@ -1,14 +1,15 @@
 <template>
-  <div class="max-w-md mx-auto p-6 space-y-8" v-if="isLogin">
-    <!-- <h1 class="text-3xl font-bold mb-6 border-b pb-2">Profile</h1> -->
-
+  <div
+    class="max-w-md mx-auto p-6 space-y-8 text-neutral-800 dark:text-neutral-100 transition-colors duration-300"
+    v-if="isLogin"
+  >
     <section class="flex items-center gap-4 mb-6">
       <div
-        class="w-20 h-20 bg-orange-500 rounded-full overflow-hidden flex items-center justify-center text-white-500 select-none"
+        class="w-20 h-20 bg-orange-500 rounded-full overflow-hidden flex items-center justify-center text-white select-none"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="w-12 h-12"
+          class="w-12 h-12 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -22,71 +23,100 @@
         </svg>
       </div>
       <div>
-        <h2 class="text-xl font-semibold text-gray-800">{{ name }}</h2>
-        <p class="text-gray-600 mt-1">{{ tel }}</p>
-        <p class="text-gray-600 mt-1">{{ location }}</p>
+        <h2
+          class="text-xl font-semibold text-gray-800 dark:text-neutral-100 transition-colors"
+        >
+          {{ name }}
+        </h2>
+        <p class="text-gray-600 dark:text-neutral-400 mt-1 transition-colors">
+          {{ tel }}
+        </p>
+        <p class="text-gray-600 dark:text-neutral-400 mt-1 transition-colors">
+          {{ location }}
+        </p>
       </div>
     </section>
 
     <section class="mb-8">
       <h3 class="text-lg font-semibold mb-2">About Me</h3>
-      <p class="text-gray-700 leading-relaxed whitespace-pre-wrap">
+      <p
+        class="text-gray-700 dark:text-neutral-300 leading-relaxed whitespace-pre-wrap transition-colors"
+      >
         {{ text }}
       </p>
     </section>
 
     <section>
-      <button class="text-orange-500" @click="handleLogout">Logout</button>
+      <button
+        class="text-orange-500 dark:text-orange-400 font-semibold hover:underline cursor-pointer"
+        @click="handleLogout"
+      >
+        Logout
+      </button>
     </section>
 
-    <details class="bg-orange-50 p-4 mb-6">
-      <summary class="cursor-pointer font-semibold text-gray-900">
+    <details
+      class="bg-orange-50 dark:bg-neutral-700/40 border border-transparent dark:border-neutral-700 p-4 mb-6 rounded-md transition-colors"
+    >
+      <summary
+        class="cursor-pointer font-semibold text-gray-900 dark:text-neutral-100 outline-none"
+      >
         My Favorite Items
       </summary>
-      <div class="mt-2 space-y-4 text-gray-700">
+      <div class="mt-2 space-y-4 text-gray-700 dark:text-neutral-300">
         <div
           v-for="item in item_save_list"
           :key="item.id"
-          class="flex justify-between items-center border-b border-gray-200 pb-2"
+          class="flex justify-between items-center border-b border-gray-200 dark:border-neutral-600 pb-2"
         >
           <router-link
             :to="`/item-detail/${item.post_id}`"
-            class="font-medium text-orange-600 hover:underline"
+            class="font-medium text-orange-600 dark:text-orange-400 hover:underline"
           >
             <span class="font-medium">{{ item.item_title }}</span>
           </router-link>
-          <time class="text-sm text-gray-500">{{
+          <time class="text-sm text-gray-500 dark:text-neutral-400">{{
             new Date(item.created_at).toLocaleDateString()
           }}</time>
         </div>
-        <p v-if="item_save_list.length === 0" class="text-gray-400">
+        <p
+          v-if="item_save_list.length === 0"
+          class="text-gray-400 dark:text-neutral-500"
+        >
           No favorite items found.
         </p>
       </div>
     </details>
 
-    <details class="rounded-md bg-orange-50 -md p-4">
-      <summary class="cursor-pointer font-semibold text-gray-900">
+    <details
+      class="rounded-md bg-orange-50 dark:bg-neutral-700/40 border border-transparent dark:border-neutral-700 p-4 transition-colors"
+    >
+      <summary
+        class="cursor-pointer font-semibold text-gray-900 dark:text-neutral-100 outline-none"
+      >
         My Posted Items
       </summary>
-      <div class="mt-2 space-y-4 text-gray-700">
+      <div class="mt-2 space-y-4 text-gray-700 dark:text-neutral-300">
         <div
           v-for="item in item_my_posted_list"
           :key="item.id"
-          class="flex justify-between items-center border-b border-gray-200 pb-2"
+          class="flex justify-between items-center border-b border-gray-200 dark:border-neutral-600 pb-2"
         >
           <router-link
             :to="`/item-detail/${item.id}`"
-            class="font-medium text-orange-600 hover:underline"
+            class="font-medium text-orange-600 dark:text-orange-400 hover:underline"
           >
             <span class="font-medium">{{ item.title }}</span>
           </router-link>
-          <time class="text-sm text-gray-500">{{
+          <time class="text-sm text-gray-500 dark:text-neutral-400">{{
             new Date(item.created_at).toLocaleDateString()
           }}</time>
         </div>
 
-        <p v-if="item_my_posted_list.length === 0" class="text-gray-400">
+        <p
+          v-if="item_my_posted_list.length === 0"
+          class="text-gray-400 dark:text-neutral-500"
+        >
           You have not posted any items yet.
         </p>
       </div>
@@ -188,3 +218,5 @@ watch(isLogin, async (loggedIn) => {
   }
 });
 </script>
+
+<style scoped></style>
