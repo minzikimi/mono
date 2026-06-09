@@ -1,16 +1,21 @@
 <template>
-  <div v-if="post" class="max-w-xl mx-auto p-4 bg-white pb-20">
-    <h1 class="text-3xl font-extrabold mb-2 text-orange-500">
+  <div
+    v-if="post"
+    class="max-w-xl mx-auto p-4 bg-white dark:bg-neutral-800 pb-20 text-neutral-800 dark:text-neutral-100 transition-colors duration-300"
+  >
+    <h1
+      class="text-3xl font-extrabold mb-2 text-orange-500 dark:text-orange-400"
+    >
       {{ post.title }}
     </h1>
-    <p class="text-sm text-gray-600 mb-4">
+    <p class="text-sm text-gray-600 dark:text-neutral-400 mb-4">
       <router-link
         :to="`/seller-profile/${post.author}`"
-        class="font-bold text-gray-800 hover:text-orange-500 hover:underline cursor-pointer"
+        class="font-bold text-gray-800 dark:text-neutral-200 hover:text-orange-500 dark:hover:text-orange-400 hover:underline cursor-pointer"
       >
         <span class="font-semibold">{{ authorName }}</span>
       </router-link>
-      <span class="text-gray-400 mx-1">·</span>
+      <span class="text-gray-400 dark:text-neutral-500 mx-1">·</span>
       <span>{{ post.location }}</span>
     </p>
 
@@ -22,45 +27,49 @@
       />
     </figure>
 
-    <div class="bg-gray-50 rounded-md overflow-hidden">
+    <div class="bg-gray-50 dark:bg-neutral-700/40 rounded-md overflow-hidden">
       <!-- 글 내용 -->
       <div class="p-4">
-        <h2 class="text-xl font-semibold text-gray-900 mb-1">
+        <h2
+          class="text-xl font-semibold text-gray-900 dark:text-neutral-100 mb-1"
+        >
           {{ post.title }}
         </h2>
-        <p class="text-lg font-bold text-orange-500 mb-4">
+        <p class="text-lg font-bold text-orange-500 dark:text-orange-400 mb-4">
           {{ post.price.toLocaleString() }}SEK
         </p>
-        <p class="text-gray-600 text-sm mb-2">Phone: {{ post.tel || "-" }}</p>
+        <p class="text-gray-600 dark:text-neutral-300 text-sm mb-2">
+          Phone: {{ post.tel || "-" }}
+        </p>
         <textarea
           readonly
           rows="8"
-          class="w-full p-3 text-gray-700 resize-none bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-md"
+          class="w-full p-3 text-gray-700 dark:text-neutral-200 resize-none bg-white dark:bg-neutral-800 border border-gray-300 dark:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-md"
           :value="post.description"
         ></textarea>
       </div>
 
       <div
         v-if="post && post.author !== user.id"
-        class="w-full flex border-t border-gray-200 bg-white"
+        class="w-full flex border-t border-gray-200 dark:border-neutral-600 bg-white dark:bg-neutral-800"
       >
         <button
           @click="openChat"
-          class="flex-1 py-4 text-center text-orange-500 hover:bg-orange-100 transition font-semibold"
+          class="flex-1 py-4 text-center text-orange-500 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-neutral-700/50 transition font-semibold"
         >
           Chat
         </button>
         <button
           v-if="!isSaved"
           @click="handleSave"
-          class="flex-1 py-4 text-center text-white bg-orange-500 border-l border-gray-200 hover:bg-orange-100 transition font-semibold"
+          class="flex-1 py-4 text-center text-white bg-orange-500 border-l border-gray-200 dark:border-neutral-600 hover:bg-orange-600 transition font-semibold"
         >
           Save
         </button>
         <button
           v-if="isSaved"
           @click="handleCancelSave"
-          class="flex-1 py-4 text-center text-gray-400 border-l border-gray-200 cursor-pointer"
+          class="flex-1 py-4 text-center text-gray-400 dark:text-neutral-500 border-l border-gray-200 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-700/30 cursor-pointer"
         >
           Saved
         </button>
@@ -68,18 +77,18 @@
 
       <div
         v-if="post && post.author === user.id"
-        class="w-full flex border-t border-gray-200 bg-white"
+        class="w-full flex border-t border-gray-200 dark:border-neutral-600 bg-white dark:bg-neutral-800"
       >
         <button
           @click="handleDelete"
-          class="flex-1 py-4 text-center text-orange-500 hover:bg-orange-100 transition font-semibold"
+          class="flex-1 py-4 text-center text-orange-500 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-neutral-700/50 transition font-semibold"
         >
           Delete
         </button>
         <router-link
           v-if="!isSaved"
           :to="`/item-post-update/${post.id}`"
-          class="flex-1 py-4 text-center text-white bg-orange-500 border-l border-gray-200 hover:bg-orange-100 transition font-semibold"
+          class="flex-1 py-4 text-center text-white bg-orange-500 border-l border-gray-200 dark:border-neutral-600 hover:bg-orange-600 transition font-semibold"
         >
           Edit
         </router-link>
