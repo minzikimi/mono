@@ -17,7 +17,10 @@
       </h1>
     </div>
 
-    <form @submit.prevent="handleSignup" class="space-y-6">
+    <form
+      @submit.prevent="handleSignup"
+      class="space-y-4 max-w-md mx-auto w-full"
+    >
       <input
         type="email"
         v-model="email"
@@ -33,22 +36,22 @@
         required
         class="w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
       />
-
-      <input
-        type="tel"
-        v-model="tel"
-        placeholder="+46 00 0000 0000"
-        required
-        class="w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-      />
-
-      <input
-        type="text"
-        v-model="name"
-        placeholder="Enter your name"
-        required
-        class="w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-      />
+      <div class="grid grid-cols-2 gap-4">
+        <input
+          type="text"
+          v-model="name"
+          placeholder="Enter your name"
+          required
+          class="w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+        <input
+          type="tel"
+          v-model="tel"
+          placeholder="+46 00 0000 0000"
+          required
+          class="w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+      </div>
 
       <input
         type="text"
@@ -61,8 +64,8 @@
       <textarea
         v-model="text"
         placeholder="Self introduction"
-        rows="4"
-        class="w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 resize-y focus:outline-none focus:ring-2 focus:ring-orange-500"
+        rows="3"
+        class="w-full px-4 py-3 border border-gray-200 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-orange-500"
       ></textarea>
       <button
         type="submit"
