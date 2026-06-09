@@ -28,8 +28,7 @@
     </div>
 
     <h1
-      class="flex-1 text-center text-2xl font-bold tracking-normal text-white dark:text-neutral-100 transition-colors"
-      style="word-spacing: 0.5rem"
+      class="flex-1 text-center text-2xl tracking-normal text-white dark:text-neutral-100 transition-colors"
     >
       {{ title }}
     </h1>
@@ -113,7 +112,7 @@ watch(currentPath, (path) => {
     title.value = "Profile";
   } else if (path === "/item-post") {
     title.value = "Post your item";
-  } else if (path === "/item-post-update") {
+  } else if (path.startsWith("/item-post-update")) {
     title.value = "Update your item";
   } else if (path === "/item-detail") {
     title.value = "Item Detail";

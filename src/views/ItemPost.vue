@@ -124,9 +124,9 @@
       </div>
       <button
         type="submit"
-        class="w-full py-4 bg-orange-500 text-white font-semibold hover:bg-orange-600 transition rounded-none cursor-pointer"
+        class="w-full py-4 bg-orange-500 text-white font-bold hover:bg-orange-600 transition rounded-md cursor-pointer text-lg shadow-md"
       >
-        Post Item
+        Update Item
       </button>
     </form>
   </div>
