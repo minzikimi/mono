@@ -1,5 +1,5 @@
 <template>
-  <Spinner :visible="isLoading" text="Just a moment, we're posting..." />
+  <Spinner :visible="isLoading" text="Just a moment, we're saving changes..." />
   <div
     class="max-w-md w-full flex flex-col justify-start items-center bg-gray-50 dark:bg-neutral-800 overflow-y-auto transition-colors duration-300 mx-auto"
   >
@@ -132,12 +132,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useAuth } from "../auth/useAuth";
-import { onMounted } from "vue";
 import supabase from "../supabase";
 import Spinner from "../components/Spinner.vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router"; // 1. useRoute 추가
 
 const title = ref("");
 const price = ref("");
@@ -150,10 +149,37 @@ const img_url = ref("");
 const { isLogin, user, updateUserState } = useAuth();
 const isLoading = ref(false);
 const router = useRouter();
+const route = useRoute();
+const itemId = route.params.id || route.params.postId;
+
+const fetchItemData = async () => {
+  if (!itemId) return;
+
+  isLoading.value = true;
+  const { data, error } = await supabase
+    .from("item_posts")
+    .select("*")
+    .eq("id", itemId)
+    .single();
+
+  if (error) {
+    console.error("failed to load:", error);
+  } else if (data) {
+    title.value = data.title;
+    price.value = data.price;
+    description.value = data.description;
+    location.value = data.location;
+    tel.value = data.tel;
+    img_url.value = data.img_url;
+    previewImage.value = data.img_url;
+  }
+  isLoading.value = false;
+};
 
 onMounted(async () => {
   await updateUserState();
   console.log("auth 정보", isLogin.value, user.value);
+  await fetchItemData();
 });
 
 let file = null;
@@ -165,9 +191,11 @@ const onFileChange = (e) => {
 };
 
 const uploadImage = async () => {
+  if (!file) return;
+  const fileName = `${Date.now()}_${file.name}`;
   const { data, error } = await supabase.storage
     .from("images")
-    .upload(file.name, file, {
+    .upload(fileName, file, {
       cacheControl: "3600",
       upsert: false,
     });
@@ -178,7 +206,7 @@ const uploadImage = async () => {
   } else {
     const { data: imgData } = supabase.storage
       .from("images")
-      .getPublicUrl(file.name);
+      .getPublicUrl(fileName);
     img_url.value = imgData.publicUrl;
   }
 };
@@ -186,21 +214,27 @@ const uploadImage = async () => {
 const handleSubmit = async () => {
   isLoading.value = true;
 
-  if (previewImage.value) {
+  if (file) {
     await uploadImage();
   }
-  const { error } = await supabase.from("item_posts").insert({
-    title: title.value,
-    price: price.value,
-    description: description.value,
-    location: location.value,
-    tel: tel.value,
-    img_url: img_url.value,
-  });
+
+  //no insert, update
+  const { error } = await supabase
+    .from("item_posts")
+    .update({
+      title: title.value,
+      price: price.value,
+      description: description.value,
+      location: location.value,
+      tel: tel.value,
+      img_url: img_url.value,
+    })
+    .eq("id", itemId); // target one item
+
   if (error) {
     alert(error.message || error);
   } else {
-    alert("posted!!");
+    alert("Updated successfully!!");
     router.push("/item-listing");
   }
   isLoading.value = false;
