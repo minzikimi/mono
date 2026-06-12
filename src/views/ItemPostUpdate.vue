@@ -136,7 +136,7 @@ import { ref, onMounted } from "vue";
 import { useAuth } from "../auth/useAuth";
 import supabase from "../supabase";
 import Spinner from "../components/Spinner.vue";
-import { useRouter, useRoute } from "vue-router"; // 1. useRoute 추가
+import { useRouter, useRoute } from "vue-router";
 
 const title = ref("");
 const price = ref("");
