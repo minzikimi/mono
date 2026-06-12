@@ -47,14 +47,7 @@
     <div
       class="right-icons flex items-center gap-x-4"
       v-if="currentPath === '/item-listing'"
-    >
-      <!-- <router-link to="/profile">
-        <Icon icon="teenyicons:user-circle-solid" width="24" height="24" />
-      </router-link> -->
-      <!-- <router-link to="/item-post">
-        <Icon icon="mdi:pencil-outline" width="24" height="24" />
-      </router-link> -->
-    </div>
+    ></div>
 
     <router-link
       v-if="currentPath.startsWith('/item-detail')"
@@ -69,8 +62,6 @@
 import { Icon } from "@iconify/vue";
 import { useRoute } from "vue-router";
 import { ref, watch, computed } from "vue";
-import { useAuth } from "../auth/useAuth";
-import { usePriceChangeSubscription } from "../composables/usePriceChangeSubscription";
 import NotificationDropdown from "./NotificationDropdown.vue";
 import { useNotificationStore } from "../stores/notification";
 
@@ -78,7 +69,6 @@ const route = useRoute();
 const currentPath = computed(() => route.path);
 const title = ref("");
 const showDropdown = ref(false);
-const { user } = useAuth();
 
 function toggleDropdown() {
   showDropdown.value = !showDropdown.value;
@@ -89,18 +79,8 @@ const notificationCount = computed(
   () => notificationStore.notifications.length,
 );
 
-watch(
-  () => user.value,
-  (val) => {
-    if (val) {
-      usePriceChangeSubscription(val.id);
-      console.log("hi");
-    }
-  },
-  { immediate: true },
-);
+//  usePriceChangeSubscription is gone
 
-// watch는 currentPath를 감시하도록 함
 watch(currentPath, (path) => {
   if (path === "/login") {
     title.value = "";

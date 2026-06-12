@@ -17,16 +17,31 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { useThemeStore } from "./stores/theme";
 import NavBar from "./components/NavBar.vue";
 import TabBar from "./components/TabBar.vue";
+import { useAuth } from "./auth/useAuth";
+import { usePriceChangeSubscription } from "./composables/usePriceChangeSubscription";
 
 const themeStore = useThemeStore();
+const { user } = useAuth();
 
 onMounted(() => {
   themeStore.initTheme();
 });
+
+//here the root component takes full responsibility for maintaining the real-time subscription!
+watch(
+  () => user.value,
+  (val) => {
+    if (val) {
+      usePriceChangeSubscription(val.id);
+      console.log("watching price chance!");
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <style scoped>
